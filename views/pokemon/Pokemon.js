@@ -40,18 +40,19 @@ export default function PokeDex() {
 
   return (
     <View>
-      <Text>Pokemon View!</Text>
+      <Text style={ styles.textSize }>Pokemon View!</Text>
       <Link to="/">
         {/* <Button title="Go Home" /> */}
-        <Text>Go Home</Text>
+        <Text style={ styles.linkButton }>Go Home</Text>
       </Link>
       <FlatList
+        style={{ backgroundColor: 'lightblue'}}
         data={pokemon}
         keyExtractor={item => item.name}
-        renderItem={({ item }) => <Text onPress={() => displayImage(item)}>{item.name}</Text>}
+        renderItem={({ item }) => <Text style={ styles.textSize } onPress={() => displayImage(item)}>{item.name}</Text>}
       />
       <Image style={ styles.imageSize } source={{ uri: image }} />
-      <Button style={styles.activeSpace} onPress={speak} title={title} />
+      <Button style={styles.activeSpace} onPress={speak} title="Say my name" />
     </View>
   )
 }
@@ -59,13 +60,31 @@ export default function PokeDex() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#555',
     alignItems: 'center',
     justifyContent: 'center',
   },
   activeSpace: {
     marginTop: 50,
-    marginBottom: 50,
+    marginBottom: 32,
+  },
+  textSize: {
+    fontSize: 24,
+    textAlign: 'center',
+  },
+  linkButton: {
+    marginTop: 6,
+    marginBottom: 6,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    textAlign: 'center',
+    maxWidth: 120,
+    fontSize: 18,
+    padding: 4,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#000',
+    backgroundColor: 'lime',
   },
   imageSize: {
     resizeMode: 'cover',

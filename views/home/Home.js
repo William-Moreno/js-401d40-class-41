@@ -5,9 +5,9 @@ import { Link } from 'react-router-native';
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text style={styles.activeSpace}>Gotta Catch 'em All!!</Text>
+      <Text style={styles.textSize}>Gotta Catch... like, ... 20 of 'em!!</Text>
       <Link to="/pokemon">
-        <Text>View Pokemon</Text>
+        <Text style={ styles.linkButton }>View Pokemon</Text>
       </Link>
     </View>
   )
@@ -21,6 +21,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   activeSpace: {
-    margin: 50,
-  }
+    marginTop: 50,
+    marginBottom: 50,
+  },
+  textSize: {
+    fontSize: 24,
+    textAlign: 'center',
+  },
+  linkButton: {
+    marginTop: 6,
+    marginBottom: 6,
+    textAlign: 'center',
+    maxWidth: 120,
+    fontSize: 18,
+    padding: 4,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#000',
+    backgroundColor: 'lime',
+  },
+  imageSize: {
+    resizeMode: 'cover',
+    width: 300,
+    height: 300,
+  },
 });

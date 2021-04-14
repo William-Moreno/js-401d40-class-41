@@ -16,9 +16,7 @@ import Home from './views/home/Home.js';
 export default function App() {
 
   const [ location, setLocation ] = useState(null);
-  const [ specificLoc, setSpecificLoc ] = useState('');
 
-  const [ errorMsg, setErrorMsg ] = useState(null);
 
 
 
@@ -29,7 +27,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Button style={styles.activeSpace} title="Press to hear some words" onPress={speak} />
+      {/* <Button style={styles.activeSpace} title="Press to hear some words" onPress={speak} /> */}
       <NativeRouter>
         <Route exact path="/">
           <Home />
@@ -45,7 +43,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 50,
+    marginTop: 50,
+    marginBottom: 32,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
