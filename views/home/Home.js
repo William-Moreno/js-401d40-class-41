@@ -1,13 +1,20 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { Link } from 'react-router-native';
+import * as Speech from 'expo-speech';
 
 export default function Home() {
+
+  const speak = () => {
+    const thingToSay = "Let's go!";
+    Speech.speak(thingToSay);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.textSize}>Gotta Catch... like, ... 20 of 'em!!</Text>
-      <Link to="/pokemon">
-        <Text style={ styles.linkButton }>View Pokemon</Text>
+      <Link to="/pokemon" onPress={speak}>
+        <Text  style={ styles.linkButton }>View Pokemon</Text>
       </Link>
     </View>
   )
