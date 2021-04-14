@@ -8,7 +8,7 @@ import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 import * as Speech from 'expo-speech';
 
-import Pokemon from './views/pokemon/Pokemon.js';
+import PokeDex from './views/pokemon/Pokemon.js';
 import Home from './views/home/Home.js';
 
 
@@ -35,7 +35,7 @@ export default function App() {
           <Home />
         </Route>
         <Route exact path="/pokemon">
-          <Pokemon />
+          <PokeDex />
         </Route>
       </NativeRouter>
       <StatusBar style="auto" />
@@ -45,12 +45,14 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    margin: 50,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   activeSpace: {
-    margin: 50,
+    marginTop: 50,
+    marginBottom: 50,
   }
 });

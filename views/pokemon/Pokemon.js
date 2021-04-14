@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Button, StyleSheet, Text, View, FlatList, Image } from 'react-native';
 import { Link } from 'react-router-native';
 import * as Speech from 'expo-speech';
+import Pokemon from 'pokemon-images';
 
-export default function Pokemon() {
+export default function PokeDex() {
 
   let [pokemon, setPokemon] = useState([]);
-  let [title, setTitle] = useState('bulbasaur');
-  let [image, setImage] = useState('https://pokeapi.co/api/v2/pokemon/1/');
+  let [title, setTitle] = useState('beedrill');
+  let [image, setImage] = useState('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png');
+  let tempUrl;
+  let tempId;
   
 
   const fetchPokemon = async () => {
@@ -21,10 +24,13 @@ export default function Pokemon() {
     }, []);
 
   const displayImage = (item) => {
-    let tempUrl = { uri: item.url };
-    let tempTitle = item.name;
+    const idArray = item.url.split('');
+        const trimId = idArray.splice(34,5);
+        trimId.pop();
+        const idNumber = trimId.join('');
+    tempUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idNumber}.png`;
     setImage(tempUrl);
-    setTitle(tempTitle);
+    setTitle(item.name);
   }
 
   const speak = () => {
@@ -44,14 +50,7 @@ export default function Pokemon() {
         keyExtractor={item => item.name}
         renderItem={({ item }) => <Text onPress={() => displayImage(item)}>{item.name}</Text>}
       />
-      <Image
-        style={{
-          resizeMode: 'cover',
-          height: 100,
-          width: 200,
-        }}
-        source={{image}}
-      />
+      <Image style={ styles.imageSize } source={{ uri: image }} />
       <Button style={styles.activeSpace} onPress={speak} title={title} />
     </View>
   )
@@ -65,10 +64,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   activeSpace: {
-    margin: 50,
+    marginTop: 50,
+    marginBottom: 50,
   },
-    logo: {
-    width: 66,
-    height: 58,
+  imageSize: {
+    resizeMode: 'cover',
+    width: 300,
+    height: 300,
   },
 });
