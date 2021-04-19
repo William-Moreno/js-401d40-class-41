@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Button, StyleSheet, Text, View, FlatList, Image } from 'react-native';
 import { Link } from 'react-router-native';
 import * as Speech from 'expo-speech';
-import Pokemon from 'pokemon-images';
 
 export default function PokeDex() {
 
@@ -10,7 +9,6 @@ export default function PokeDex() {
   let [title, setTitle] = useState('beedrill');
   let [image, setImage] = useState('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png');
   let tempUrl;
-  let tempId;
   
 
   const fetchPokemon = async () => {
@@ -25,9 +23,9 @@ export default function PokeDex() {
 
   const displayImage = (item) => {
     const idArray = item.url.split('');
-        const trimId = idArray.splice(34,5);
-        trimId.pop();
-        const idNumber = trimId.join('');
+    const trimId = idArray.splice(34,5);
+    trimId.pop();
+    const idNumber = trimId.join('');
     tempUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idNumber}.png`;
     setImage(tempUrl);
     setTitle(item.name);

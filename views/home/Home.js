@@ -14,7 +14,7 @@ export default function Home() {
     <View style={styles.container}>
       <Text style={styles.textSize}>Gotta Catch... like, ... 20 of 'em!!</Text>
       <Link to="/pokemon" onPress={speak}>
-        <Text  style={ styles.linkButton }>View Pokemon</Text>
+        <Text style={ styles.linkButton }>View Pokemon</Text>
       </Link>
     </View>
   )
